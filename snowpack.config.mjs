@@ -3,9 +3,10 @@ export default {
     'src': '/',
     'scss': '/'
   },
-  packageOptions: {
-    source: 'remote',
-    types: true,
+  optimize: {
+    bundle: true,
+    minify: true,
+    target: 'es2018',
   },
   routes: [
     {

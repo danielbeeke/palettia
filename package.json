@@ -10,6 +10,8 @@
   "author": "Daniel Beeke",
   "license": "GPLv2",
   "devDependencies": {
-    "@snowpack/plugin-sass": "^1.4.0"
+    "@snowpack/plugin-sass": "^1.4.0",
+    "@vaadin/router": "^1.7.4",
+    "uce": "^1.16.3"
   }
 }
