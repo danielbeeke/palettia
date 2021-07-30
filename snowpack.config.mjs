@@ -1,6 +1,6 @@
 export default {
   mount: {
-    'docs': '/',
+    'src': '/',
     'scss': '/'
   },
   packageOptions: {
@@ -14,6 +14,9 @@ export default {
       dest: '/index.html',
     },
   ],
+  devOptions: {
+    out: 'docs'
+  },
   plugins: [
     '@snowpack/plugin-sass'
   ]

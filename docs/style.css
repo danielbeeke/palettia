@@ -1,0 +1,25 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.photo {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+}
+
+palette-edit {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+.toolbar {
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+}
