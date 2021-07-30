@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@vaadin/router": "^1.7.4",
+    "uce": "^1.16.3",
+    "uhtml": "^2.7.6"
+  },
+  "lock": {
+    "@vaadin/router#^1.7.4": "@vaadin/router@v1.7.4-UxlmXJOi7j0JVorWsdNN",
+    "uce#^1.16.3": "uce@v1.16.3-qQhICYrcc6ocv7WJRurd",
+    "uhtml#^2.7.6": "uhtml@v2.7.6-7FFvO0uZVYZgl8UJu0XL"
+  }
+}

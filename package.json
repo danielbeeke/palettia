@@ -1,0 +1,15 @@
+{
+  "name": "palettia",
+  "version": "1.0.0",
+  "description": "Smooth color palettes",
+  "main": "index.js",
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build"
+  },
+  "author": "Daniel Beeke",
+  "license": "GPLv2",
+  "devDependencies": {
+    "@snowpack/plugin-sass": "^1.4.0"
+  }
+}

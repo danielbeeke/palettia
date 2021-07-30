@@ -1,0 +1,13 @@
+{
+  "name": "Palettia",
+  "short_name": "Palettia",
+  "description": "Smooth color palettes.",
+  "start_url": ".",
+  "display": "fullscreen",
+  "background_color": "#da532c",
+  "icons": [ {
+    "src": "favicon.svg",
+    "sizes": "512x512",
+    "type": "image/svg"
+  }]
+}
