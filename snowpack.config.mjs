@@ -15,7 +15,7 @@ export default {
       dest: '/index.html',
     },
   ],
-  devOptions: {
+  buildOptions: {
     out: 'docs'
   },
   plugins: [
