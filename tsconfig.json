@@ -1,6 +1,19 @@
 {
-  "baseUrl": "./docs",
-  "compilerOptions": {
-    "lib": ["ESNext", "DOM"]
-  },
+	"compilerOptions": {
+    "allowJs": true,
+		"target": "ESNext",
+    "moduleResolution": "Node",
+		"lib": [
+			"scripthost",
+			"dom", "dom.iterable", "es2019"
+		],
+		"module": "es6",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+	},
+	"exclude": [
+		"node_modules",
+    "docs"
+	]
 }

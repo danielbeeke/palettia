@@ -5,21 +5,20 @@ body {
   min-height: 100vh;
 }
 
-.photo {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  object-fit: contain;
+* {
+  box-sizing: border-box;
 }
 
-palette-edit {
-  width: 100vw;
-  height: 100vh;
-  display: block;
+:root {
+  --color-black: black;
+  --color-white: white;
+  --background: var(--color-black);
+  --padding: 20px;
+  --dotSize: 50px;
 }
 
-.toolbar {
-  position: fixed;
-  bottom: 0;
-  z-index: 10;
-}
+@import './components/dot-popup';
+@import './components/palette-dots';
+@import './components/palette-edit';
+@import './components/palette-list';
+@import './components/toolbar';

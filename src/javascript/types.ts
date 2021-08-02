@@ -1,101 +1,113 @@
-export {};
+import { Definition } from 'uce'
 
 declare global {
-  enum ChooseFileSystemEntriesType {
-      'open-file',
-      'save-file',
-      'open-directory'
-  }
+    interface Window { showOpenFilePicker: (options: ChooseFileSystemEntriesOptions) =>  }
 
-  interface ChooseFileSystemEntriesOptionsAccepts {
-      description?: string;
-      mimeTypes?: string;
-      extensions?: string;
-  }
+    enum ChooseFileSystemEntriesType {
+        'open-file',
+        'save-file',
+        'open-directory'
+    }
 
-  interface ChooseFileSystemEntriesOptions {
-      type?: ChooseFileSystemEntriesType;
-      multiple?: boolean;
-      accepts?: ChooseFileSystemEntriesOptionsAccepts[];
-      excludeAcceptAllOption?: boolean;
-  }
+    interface ChooseFileSystemEntriesOptionsAccepts {
+        description?: string;
+        mimeTypes?: string;
+        extensions?: string;
+    }
 
-  interface FileSystemHandlePermissionDescriptor {
-      writable?: boolean;
-  }
+    interface ChooseFileSystemEntriesOptions {
+        type?: ChooseFileSystemEntriesType;
+        types: unknown;
+        multiple?: boolean;
+        accepts?: ChooseFileSystemEntriesOptionsAccepts[];
+        excludeAcceptAllOption?: boolean;
+    }
 
-  interface FileSystemCreateWriterOptions {
-      keepExistingData?: boolean;
-  }
+    interface FileSystemHandlePermissionDescriptor {
+        writable?: boolean;
+    }
 
-  interface FileSystemGetFileOptions {
-      create?: boolean;
-  }
+    interface FileSystemCreateWriterOptions {
+        keepExistingData?: boolean;
+    }
 
-  interface FileSystemGetDirectoryOptions {
-      create?: boolean;
-  }
+    interface FileSystemGetFileOptions {
+        create?: boolean;
+    }
 
-  interface FileSystemRemoveOptions {
-      recursive?: boolean;
-  }
+    interface FileSystemGetDirectoryOptions {
+        create?: boolean;
+    }
 
-  enum SystemDirectoryType {
-      'sandbox'
-  }
+    interface FileSystemRemoveOptions {
+        recursive?: boolean;
+    }
 
-  interface GetSystemDirectoryOptions {
-      type: SystemDirectoryType;
-  }
+    enum SystemDirectoryType {
+        'sandbox'
+    }
 
-  interface FileSystemWriter {
-      write(position: number, data: BufferSource | Blob | string): Promise<void>;
-      truncate(size: number): Promise<void>;
-      close(): Promise<void>;
-  }
+    interface GetSystemDirectoryOptions {
+        type: SystemDirectoryType;
+    }
 
-  interface FileSystemWriterConstructor {
-      new(): FileSystemWriter;
-  }
+    interface FileSystemWriter {
+        write(position: number, data: BufferSource | Blob | string): Promise<void>;
+        truncate(size: number): Promise<void>;
+        close(): Promise<void>;
+    }
 
-  interface FileSystemHandle {
-      isFile: Readonly<boolean>;
-      isDirectory: Readonly<boolean>;
-      name: Readonly<string>;
-      queryPermission(descriptor?: FileSystemHandlePermissionDescriptor): Promise<PermissionState>;
-      requestPermission(descriptor?: FileSystemHandlePermissionDescriptor): Promise<PermissionState>;
-  }
+    interface FileSystemWriterConstructor {
+        new(): FileSystemWriter;
+    }
 
-  interface FileSystemHandleConstructor {
-      new(): FileSystemHandle;
-  }
+    interface FileSystemHandle {
+        isFile: Readonly<boolean>;
+        isDirectory: Readonly<boolean>;
+        name: Readonly<string>;
+        queryPermission(descriptor?: FileSystemHandlePermissionDescriptor): Promise<PermissionState>;
+        requestPermission(descriptor?: FileSystemHandlePermissionDescriptor): Promise<PermissionState>;
+    }
 
-  interface FileSystemFileHandle extends FileSystemHandle {
-      getFile(): Promise<File>;
-      createWriter(options?: FileSystemCreateWriterOptions): Promise<FileSystemWriter>;
-  }
+    interface FileSystemHandleConstructor {
+        new(): FileSystemHandle;
+    }
 
-  interface FileSystemFileHandleConstructor {
-      new(): FileSystemFileHandle;
-  }
+    interface FileSystemFileHandle extends FileSystemHandle {
+        getFile(): Promise<File>;
+        createWriter(options?: FileSystemCreateWriterOptions): Promise<FileSystemWriter>;
+    }
 
-  interface FileSystemDirectoryHandle extends FileSystemHandle {
-      getFile(name: string, options?: FileSystemGetFileOptions): Promise<FileSystemFileHandle>;
-      getDirectory(name: string, options?: FileSystemGetDirectoryOptions): Promise<FileSystemDirectoryHandle>;
-      getEntries(): AsyncIterable<FileSystemFileHandle | FileSystemDirectoryHandle>;
-      removeEntry(name: string, options?: FileSystemRemoveOptions): Promise<void>;
-  }
+    interface FileSystemFileHandleConstructor {
+        new(): FileSystemFileHandle;
+    }
 
-  interface FileSystemDirectoryHandleConstructor {
-      new(): FileSystemDirectoryHandle;
-      getSystemDirectory(options: GetSystemDirectoryOptions): Promise<FileSystemDirectoryHandle>;
-  }
+    interface FileSystemDirectoryHandle extends FileSystemHandle {
+        getFile(name: string, options?: FileSystemGetFileOptions): Promise<FileSystemFileHandle>;
+        getDirectory(name: string, options?: FileSystemGetDirectoryOptions): Promise<FileSystemDirectoryHandle>;
+        getEntries(): AsyncIterable<FileSystemFileHandle | FileSystemDirectoryHandle>;
+        removeEntry(name: string, options?: FileSystemRemoveOptions): Promise<void>;
+    }
 
-  interface Window {
-      chooseFileSystemEntries(options?: ChooseFileSystemEntriesOptions): Promise<FileSystemHandle | FileSystemHandle[]>;
-      FileSystemHandle: FileSystemHandleConstructor;
-      FileSystemFileHandle: FileSystemFileHandleConstructor;
-      FileSystemDirectoryHandle: FileSystemDirectoryHandleConstructor;
-      FileSystemWriter: FileSystemWriterConstructor;
-  }
+    interface FileSystemDirectoryHandleConstructor {
+        new(): FileSystemDirectoryHandle;
+        getSystemDirectory(options: GetSystemDirectoryOptions): Promise<FileSystemDirectoryHandle>;
+    }
+
+    interface Window {
+        chooseFileSystemEntries(options?: ChooseFileSystemEntriesOptions): Promise<FileSystemHandle | FileSystemHandle[]>;
+        FileSystemHandle: FileSystemHandleConstructor;
+        FileSystemFileHandle: FileSystemFileHandleConstructor;
+        FileSystemDirectoryHandle: FileSystemDirectoryHandleConstructor;
+        FileSystemWriter: FileSystemWriterConstructor;
+    }
 }
+
+export type paletteState = {
+    fileName: string
+    id: string
+}
+
+export type PaletteEdit = Definition<{}, {
+    location: { params: { [key: string]: string } }
+}>
